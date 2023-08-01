@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cardioid</title>
+	<style type="text/css">
+		body{
+			color: white !important;
+			padding: 1em;
+			background-color: black !important;
+			font-family: monospace;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<h1>Cardioid</h1>
+	<p>A cardioid is a fascinating mathematical curve that takes its name from the Greek words "cardia" and "oid," which mean "heart" and "shape," respectively. This shape is formed by connecting a series of points on a circle in a particular pattern. In this article, we will explore how a cardioid gets formed by connecting points on a circle two times mod n.</p>
+
+	<p>To begin with, let's define some terms. A circle is a geometric shape that consists of all points in a plane that are equidistant from a fixed point called the center. The distance between the center and any point on the circle is called the radius. Mod n, on the other hand, refers to the remainder left when a number is divided by n.</p>
+	<center><iframe src="cardioid/index.html?counts=0"></iframe></center>
+	<p>Now, suppose we have a circle with radius r and center at the origin (0,0) of a coordinate plane. We will select n points on the circumference of the circle, equally spaced at intervals of 2π/n radians apart. We can label these points 0, 1, 2, ..., n-1, starting from the point at the positive x-axis and moving counterclockwise.</p>
+	<center><iframe src="cardioid/index.html?counts=10&times=1"></iframe></center>
+	<p>Now, let's consider connecting each point on the circle to the point two times mod n away from it. For example, point 0 will be connected to point 0 + 2(0) mod n = 0, point 1 will be connected to point 1 + 2(1) mod n = 3, point 2 will be connected to point 2 + 2(2) mod n = 2, and so on.</p>
+	<p>We can plot these connections on the coordinate plane and observe that they form a shape that resembles a heart or a drop of water. This is the cardioid! The equation for this curve can be written in polar coordinates as r = 2r sin(θ), where θ is the angle formed by the line connecting the center of the circle and a point on the cardioid.</p>
+	<center><iframe src="cardioid/index.html?counts=20&times=2"></iframe></center>
+	<center><iframe src="cardioid/index.html?counts=100&times=2&nopoints=true"></iframe></center>
+	<center>For n=100</center>	
+
+	<p>One interesting property of the cardioid is that it is a special case of the epitrochoid, which is a curve traced by a point on a circle that rolls around the outside of another circle. In this case, the smaller circle that generates the cardioid is actually rolling around the circumference of a larger circle with radius 2r.</p>
+
+	<p>The cardioid has many fascinating properties and applications in various fields such as mathematics, physics, and engineering. For example, it is used to model the flow of fluid around a circular obstacle and is also used in antenna design to optimize radiation patterns.</p>
+
+	<p>In conclusion, the cardioid is a beautiful mathematical curve that is formed by connecting points on a circle two times mod n. It has numerous applications and properties that make it a fascinating topic for study and exploration.</p>
+
+	<h1>Play with it!</h1>
+	<p>Enter the properties you need your diagram to have. Also note that if we change times to something other than 3, more interesting shapes emerge.</p>
+	<table>
+		<tr>
+		<th>number of points:</th><td> <input type="number" id="counts" min="0" max="400" value="100"></td>
+		</tr>
+		<tr>
+		<th>times:</th><td> <input type="number" id="times" min="0" max="30" value="2"></td>
+		</tr>
+		<tr>
+		<th>dont show points:</th><td> <input type="checkbox" id="nopoints" checked></td>
+		</tr>
+	</table>
+	<button class="btn btn-success" onclick="generate()">Generate!</button>
+	<br>
+	<iframe id="screen" width="720" height="480" src="cardioid/index.html?counts=4"></iframe>
+	<br>
+	For an animated version: <a href="animated-c/index.html">go here</a>.
+	<script type="text/javascript">
+		function generate() {
+			loc="cardioid/index.html?counts="+
+				document.getElementById('counts').value+
+				"&times="+
+				document.getElementById('times').value+
+				"&nopoints="+
+				document.getElementById('nopoints').checked
+			console.log(loc)
+			document.getElementById("screen").src=loc
+		}
+		generate()
+	</script>
+</body>
+</html>
